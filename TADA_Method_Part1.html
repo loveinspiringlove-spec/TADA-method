@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Divine Alignment — Divine Alignment</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #480A52;
+    --mauve: #7A1060;
+    --rose: #7A1060;
+    --blush: #C8A0C0;
+    --petal: #FAE8EC;
+    --cream: #F5EFE6;
+    --gold: #D4A853;
+    --gold-light: #D4A853;
+    --white: #FFFAF8;
+    --text-dark: #480A52;
+    --text-mid: #7B3F6E;
+    --text-light: #B07898;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: #F5EFE6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 0;
+    background: linear-gradient(145deg, #3D0D5E 0%, #480A52 28%, #4A0040 62%, #2A0838 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(201,132,142,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Sacred geometry SVG background */
+  .title-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1;
+  }
+
+  .hero-geo {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: sigilBreath 2.5s ease-in-out infinite;
+  }
+
+  .hero-geo svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #D4A853;
+    opacity: 0.9;
+    margin-bottom: 16px;
+    animation: fadeUp 1s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(52px, 8vw, 100px);
+    line-height: 1.1;
+    color: #F5DC7A;
+    letter-spacing: 1px;
+    animation: fadeUp 1s 0.2s ease both;
+    text-shadow: 0 0 60px rgba(245,220,122,0.7), 0 0 20px rgba(245,220,122,0.4), 0 2px 8px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: #FFFFFF;
+    display: inline;
+    font-weight: 300;
+    text-shadow: 0 0 30px rgba(255,255,255,0.25), 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .hero-divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #D4A853, transparent);
+    margin: 36px auto 18px;
+    animation: fadeUp 1s 0.4s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--blush);
+    opacity: 0.9;
+    max-width: 420px;
+    line-height: 1.65;
+    animation: fadeUp 1s 0.6s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-sigil {
+    margin-top: 20px;
+    animation: fadeUp 1s 0.8s ease both;
+    position: relative;
+    width: 220px;
+    height: 220px;
+    z-index: 1;
+  }
+
+  .hero-sigil svg {
+    width: 100%;
+    height: 100%;
+    animation: sigilBreath 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 16px rgba(232,201,122,0.5));
+  }
+
+  @keyframes sigilBreath {
+    0%, 100% { opacity: 0.82; filter: drop-shadow(0 0 4px rgba(212,168,83,0.2)); }
+    50%       { opacity: 1;    filter: drop-shadow(0 0 10px rgba(212,168,83,0.45)); }
+  }
+
+
+
+  .scroll-hint {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+    animation: fadeUp 1s 1.2s ease both;
+  }
+
+  .scroll-chevrons {
+    animation: chevronDrift 2.4s ease-in-out infinite;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: #7A1060;
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* ── MODULE FLOW ── */
+  .modules {
+    padding: 16px 0 0;
+    background: #D4A853;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .modules-header {
+    text-align: center;
+    padding: 0 40px 16px;
+  }
+
+  .modules-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(20px, 4vw, 28px);
+    color: #480A52;
+    opacity: 1;
+    white-space: nowrap;
+    text-align: center;
+  }
+  }
+
+  /* Horizontal scroll track */
+  .modules-track {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 0;
+    gap: 0;
+    max-width: 100%;
+  }
+
+  .module-card {
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: default;
+    transition: flex 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* Unified color scheme — all cards match hero */
+  .module-card:nth-child(1) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+  .module-card:nth-child(2) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+  .module-card:nth-child(3) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+  .module-card:nth-child(4) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+  .module-card:nth-child(5) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+
+  .module-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(239,200,208,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .module-number {
+    font-family: 'Cinzel', serif;
+    font-size: 80px;
+    font-weight: 400;
+    color: #F5DC7A;
+    opacity: 0.45;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    line-height: 1;
+    pointer-events: none;
+    text-shadow: 0 0 20px rgba(245,220,122,0.4);
+  }
+
+  .module-content {
+    padding: 48px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  .module-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: rgba(212,168,83,0.7);
+    margin-bottom: 12px;
+
+  }
+
+
+  .module-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 16px;
+    margin-top: -4px;
+    line-height: 1.3;
+  }
+
+  .module-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 6vw, 52px);
+    color: #D4A853;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(232,201,122,0.45), 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .module-essence {
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.85);
+    opacity: 1;
+    font-style: italic;
+    margin-bottom: 36px;
+    flex: 1;
+  }
+
+  .module-divider {
+    width: 40px;
+    height: 1px;
+    background: #D4A853;
+    opacity: 0.5;
+    margin-bottom: 28px;
+  }
+
+  /* Lesson list */
+  .lesson-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .lesson-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .lesson-dot {
+    width: 9px;
+    height: 9px;
+    background: #D4A853;
+    opacity: 0.9;
+    margin-top: 6px;
+    flex-shrink: 0;
+    transform: rotate(45deg);
+    box-shadow: 0 0 6px rgba(232,201,122,0.6);
+  }
+
+  .lesson-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    color: #FFFFFF;
+    opacity: 0.95;
+    line-height: 1.5;
+  }
+
+  /* ── LESSON DEEP DIVE — TILE GRID ── */
+  .deep-dive {
+    background: var(--white);
+    padding: 100px 60px;
+  }
+
+  .deep-dive-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-top: 20px;
+  }
+
+  .deep-dive-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 48px);
+    color: #7A1060;
+  }
+
+  /* Module section */
+  .module-section {
+    margin-bottom: 80px;
+  }
+
+  .module-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--blush);
+  }
+
+  .module-num-pill {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #F5DC7A;
+    background: #7A1060;
+    padding: 8px 20px;
+    border-radius: 30px;
+    white-space: nowrap;
+    border: 1px solid rgba(232,201,122,0.3);
+  }
+
+  .module-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 600;
+    color: #7A1060;
+    line-height: 1.15;
+  }
+
+  /* Lesson tiles grid */
+  .lesson-tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .lesson-tile {
+    background: #F5EFE6;
+    border-radius: 12px;
+    padding: 28px 24px;
+    border: 1px solid rgba(212,168,83,0.25);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lesson-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, #D4A853, #D4A853);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .lesson-tile:hover {
+    background: var(--white);
+    border-color: var(--rose);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(61,26,58,0.08);
+  }
+
+  .lesson-tile:hover::before { opacity: 1; }
+
+  .lesson-tile-num {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #7B3F6E;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .lesson-tile-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #480A52;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .lesson-tile-desc {
+    font-size: 18px;
+    line-height: 1.75;
+    color: #7B3F6E;
+    font-style: italic;
+  }
+
+  /* ── WHATS INCLUDED ── */
+  .included {
+    background: linear-gradient(145deg, #3D0D5E 0%, #480A52 28%, #4A0040 62%, #2A0838 100%);
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .included::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(201,132,142,0.2) 0%, transparent 60%);
+  }
+
+  .included h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 52px);
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .included-sub {
+    font-style: italic;
+    color: var(--blush);
+    opacity: 0.8;
+    font-size: 18px;
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .included-item {
+    background: rgba(255,255,255,0.04);
+    padding: 40px 28px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .included-item:hover { background: rgba(255,255,255,0.08); }
+
+  .included-icon { margin-bottom: 14px; display: block; }
+
+  .included-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #F5DC7A;
+    margin-bottom: 8px;
+  }
+
+  .included-item p {
+    font-size: 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    letter-spacing: 0.2px;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--petal);
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .closing-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    color: #7A1060;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    letter-spacing: 12px;
+  }
+
+  .closing h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 5vw, 60px);
+    color: var(--plum);
+    line-height: 1.2;
+    max-width: 700px;
+    margin: 0 auto 32px;
+  }
+
+  .closing h2 em { font-style: italic; color: var(--mauve); }
+
+  .closing p {
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--text-mid);
+    max-width: 560px;
+    margin: 0 auto 60px;
+    font-style: italic;
+  }
+
+  .closing-footer {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #7A1060;
+    opacity: 0.85;
+  }
+
+  /* ── BRAND HEADER STANDARD ── */
+  .brand-top-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: linear-gradient(180deg, #3D0D5E 0%, #2A0838 100%);
+    border-bottom: 1px solid rgba(212,168,83,0.2);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+
+  .brand-top-bar .brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #D4A853;
+    text-shadow: 0 0 10px rgba(212,168,83,0.35);
+    white-space: nowrap;
+  }
+
+  .brand-star {
+    color: #D4A853;
+    font-size: 10px;
+    opacity: 0.85;
+    text-shadow: 0 0 8px rgba(212,168,83,0.6);
+    flex-shrink: 0;
+    font-family: 'EB Garamond', serif;
+    font-style: normal;
+  }
+
+
+  
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes chevronDrift {
+    0%, 100% { opacity: 0.6; transform: translateY(0); }
+    50%       { opacity: 1;   transform: translateY(6px); }
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .modules-track { grid-template-columns: 1fr; }
+    .module-card { min-height: auto; }
+    .lesson-tiles { grid-template-columns: repeat(2, 1fr); }
+    .included-grid { grid-template-columns: 1fr; }
+    .deep-dive { padding: 60px 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .lesson-tiles { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── BRAND HEADER ── -->
+<div class="brand-top-bar">
+  <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:9px;vertical-align:middle;">✦</span></span>
+  <span class="brand-name">THE ART OF DIVINE ALIGNMENT</span>
+  <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:9px;vertical-align:middle;">✦</span></span>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" style="padding-top: 48px;">
+
+  <!-- Eyebrow + title — standalone, no geo overlap -->
+  <div style="position:relative;z-index:2;text-align:center;padding: 40px 20px 0;">
+    <p style="font-family:'Cinzel',serif;font-size:clamp(10px,1.8vw,13px);letter-spacing:7px;color:white;opacity:0.7;margin-bottom:12px;font-weight:400;animation:fadeUp 1s ease both;">THE ART OF</p>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(56px,10vw,108px);line-height:0.95;color:#D4A853;text-shadow:0 0 50px rgba(212,168,83,0.45);animation:fadeUp 1s 0.2s ease both;position:relative;z-index:2;">Divine<br><em style="font-style:italic;color:#D4A853;font-weight:300;">Alignment</em></h1>
+  </div>
+
+  <div class="hero-divider" style="margin-top:28px;"></div>
+  <p class="hero-sub">A loving return to your senses, your inner being,<br>and the life that was always meant for you.</p>
+
+  <!-- Geo sigil — below subtitle as decorative element -->
+  <div style="position:relative;width:200px;height:200px;margin:24px auto 0;animation:fadeUp 1s 0.6s ease both;">
+    <div class="hero-geo" style="position:absolute;width:200px;height:200px;top:0;left:0;transform:none;">
+      <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="130" cy="130" r="108" fill="none" stroke="rgba(212,168,83,0.35)" stroke-width="0.7"/>
+        <circle cx="130" cy="130" r="36" fill="none" stroke="rgba(212,168,83,0.65)" stroke-width="0.9"/>
+        <circle cx="130"   cy="94"    r="36" fill="none" stroke="rgba(212,168,83,0.65)" stroke-width="0.9"/>
+        <circle cx="161.2" cy="112"   r="36" fill="none" stroke="rgba(212,168,83,0.65)" stroke-width="0.9"/>
+        <circle cx="161.2" cy="148"   r="36" fill="none" stroke="rgba(212,168,83,0.65)" stroke-width="0.9"/>
+        <circle cx="130"   cy="166"   r="36" fill="none" stroke="rgba(212,168,83,0.65)" stroke-width="0.9"/>
+        <circle cx="98.8"  cy="148"   r="36" fill="none" stroke="rgba(212,168,83,0.65)" stroke-width="0.9"/>
+        <circle cx="98.8"  cy="112"   r="36" fill="none" stroke="rgba(212,168,83,0.65)" stroke-width="0.9"/>
+        <circle cx="130"   cy="58"    r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="192.2" cy="94"    r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="192.2" cy="166"   r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="130"   cy="202"   r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="67.8"  cy="166"   r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="67.8"  cy="94"    r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="161.2" cy="76"    r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="192.2" cy="130"   r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="161.2" cy="184"   r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="98.8"  cy="184"   r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="67.8"  cy="130"   r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="98.8"  cy="76"    r="36" fill="none" stroke="rgba(212,168,83,0.45)" stroke-width="0.8"/>
+        <circle cx="130" cy="130" r="1.5" fill="rgba(212,168,83,0.9)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="scroll-hint" style="margin-top:16px;">
+    <span style="display:inline-block;color:#D4A853;font-size:10px;line-height:1;font-family:Arial,sans-serif;font-style:normal;vertical-align:middle;opacity:0.85;">✦</span>
+  </div>
+</section>
+
+<!-- ── MODULE FLOW TILES ── -->
+<section class="modules">
+
+  <div class="modules-header reveal">
+    <p style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:6px;color:#2E0A30;opacity:0.6;margin-bottom:8px;">THE TADA METHOD</p><h2>Four modules. One loving path.</h2>
+  </div>
+
+  <div class="modules-track">
+
+    <div class="module-card reveal">
+      <div class="module-number">01</div>
+      <div class="module-content">
+        <p class="module-badge">MODULE 01 &nbsp;·&nbsp; TUNE IN</p>
+        <h3 class="module-title">Tune In</h3>
+        <p class="module-subtitle">Your Senses Always Guide You</p>
+        <p class="module-essence">Your body offers loving feedback that gently guides you toward greater comfort, clarity, and alignment. This module helps you reconnect with your body's wisdom and learn the language of your own guidance system.</p>
+        <div class="module-divider"></div>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">Listening to Your Body's Guidance</span></li>
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">Calibrating Through Your Senses</span></li>
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">Sacred Body Care & Daily Alignment</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="module-card reveal">
+      <div class="module-number">02</div>
+      <div class="module-content">
+        <p class="module-badge">MODULE 02 &nbsp;·&nbsp; ALIGN</p>
+        <h3 class="module-title">Align</h3>
+        <p class="module-subtitle">Your Inner Being & Emotional Guidance</p>
+        <p class="module-essence">Your inner being is the fullest expression of who you are — connected, expansive, and aligned. Your emotions are its language. This module teaches you to hear both, and use them to find your way back to yourself.</p>
+        <div class="module-divider"></div>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">Understanding Your Inner Being</span></li>
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">The Emotional Guidance Scale</span></li>
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">Closing the Gap & Finding Better Feelings</span></li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <div class="module-card reveal">
+      <div class="module-number">03</div>
+      <div class="module-content">
+        <p class="module-badge">MODULE 03 &nbsp;·&nbsp; DIRECT</p>
+        <h3 class="module-title">Direct</h3>
+        <p class="module-subtitle">The Power of Deliberate Focus</p>
+        <p class="module-essence">What you consistently focus on shapes your emotional state, energy, and lived experience. This module teaches you how to intentionally direct your attention toward what you want to cultivate.</p>
+        <div class="module-divider"></div>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">How Focus Shapes Reality</span></li>
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">The Focus Wheel & Alignment Practices</span></li>
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">Visualisation, Scripting & Releasing Resistance</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="module-card reveal">
+      <div class="module-number">04</div>
+      <div class="module-content">
+        <p class="module-badge">MODULE 04 &nbsp;·&nbsp; ALLOW</p>
+        <h3 class="module-title">Allow</h3>
+        <p class="module-subtitle">Living in Divine Alignment</p>
+        <p class="module-essence">Alignment is not something you achieve once — it is a relationship you cultivate daily. This final module helps you embody alignment in a way that feels natural, sustainable, and deeply personal.</p>
+        <div class="module-divider"></div>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">Weaving Alignment Into Everyday Life</span></li>
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">Creating Your Personal Alignment Rituals</span></li>
+          <li class="lesson-item"><span style="color:#E8C870;font-family:Arial,sans-serif;font-size:13px;margin-right:10px;flex-shrink:0;vertical-align:middle;">✦</span></span><span class="lesson-text">My Divine Ritual</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

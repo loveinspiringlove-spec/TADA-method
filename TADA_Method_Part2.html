@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The TADA Method</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #480A52;
+    --mauve: #7A1060;
+    --rose: #7A1060;
+    --blush: #C8A0C0;
+    --petal: #FAE8EC;
+    --cream: #F5EFE6;
+    --gold: #D4A853;
+    --gold-light: #D4A853;
+    --white: #FFFAF8;
+    --text-dark: #480A52;
+    --text-mid: #7B3F6E;
+    --text-light: #B07898;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: #F5EFE6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 0;
+    background: linear-gradient(145deg, #3D0D5E 0%, #480A52 28%, #4A0040 62%, #2A0838 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(201,132,142,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Sacred geometry SVG background */
+  .title-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1;
+  }
+
+  .hero-geo {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: sigilBreath 2.5s ease-in-out infinite;
+  }
+
+  .hero-geo svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #D4A853;
+    opacity: 0.9;
+    margin-bottom: 16px;
+    animation: fadeUp 1s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(52px, 8vw, 100px);
+    line-height: 1.1;
+    color: #F5DC7A;
+    letter-spacing: 1px;
+    animation: fadeUp 1s 0.2s ease both;
+    text-shadow: 0 0 60px rgba(245,220,122,0.7), 0 0 20px rgba(245,220,122,0.4), 0 2px 8px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: #FFFFFF;
+    display: inline;
+    font-weight: 300;
+    text-shadow: 0 0 30px rgba(255,255,255,0.25), 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .hero-divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #D4A853, transparent);
+    margin: 36px auto 18px;
+    animation: fadeUp 1s 0.4s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--blush);
+    opacity: 0.9;
+    max-width: 420px;
+    line-height: 1.65;
+    animation: fadeUp 1s 0.6s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-sigil {
+    margin-top: 20px;
+    animation: fadeUp 1s 0.8s ease both;
+    position: relative;
+    width: 220px;
+    height: 220px;
+    z-index: 1;
+  }
+
+  .hero-sigil svg {
+    width: 100%;
+    height: 100%;
+    animation: sigilBreath 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 16px rgba(232,201,122,0.5));
+  }
+
+  @keyframes sigilBreath {
+    0%, 100% { opacity: 0.82; filter: drop-shadow(0 0 4px rgba(212,168,83,0.2)); }
+    50%       { opacity: 1;    filter: drop-shadow(0 0 10px rgba(212,168,83,0.45)); }
+  }
+
+
+
+  .scroll-hint {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+    animation: fadeUp 1s 1.2s ease both;
+  }
+
+  .scroll-chevrons {
+    animation: chevronDrift 2.4s ease-in-out infinite;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: #7A1060;
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* ── MODULE FLOW ── */
+  .modules {
+    padding: 16px 0 0;
+    background: #D4A853;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .modules-header {
+    text-align: center;
+    padding: 0 40px 16px;
+  }
+
+  .modules-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(20px, 4vw, 28px);
+    color: #480A52;
+    opacity: 1;
+    white-space: nowrap;
+    text-align: center;
+  }
+  }
+
+  /* Horizontal scroll track */
+  .modules-track {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 0;
+    gap: 0;
+    max-width: 100%;
+  }
+
+  .module-card {
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: default;
+    transition: flex 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* Unified color scheme — all cards match hero */
+  .module-card:nth-child(1) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+  .module-card:nth-child(2) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+  .module-card:nth-child(3) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+  .module-card:nth-child(4) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+  .module-card:nth-child(5) { background: linear-gradient(145deg, #2A0838 0%, #480A52 40%, #7A1060 100%); }
+
+  .module-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(239,200,208,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .module-number {
+    font-family: 'Cinzel', serif;
+    font-size: 80px;
+    font-weight: 400;
+    color: #F5DC7A;
+    opacity: 0.45;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    line-height: 1;
+    pointer-events: none;
+    text-shadow: 0 0 20px rgba(245,220,122,0.4);
+  }
+
+  .module-content {
+    padding: 48px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  .module-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: rgba(212,168,83,0.7);
+    margin-bottom: 12px;
+
+  }
+
+
+  .module-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 16px;
+    margin-top: -4px;
+    line-height: 1.3;
+  }
+
+  .module-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 6vw, 52px);
+    color: #D4A853;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(232,201,122,0.45), 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .module-essence {
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.85);
+    opacity: 1;
+    font-style: italic;
+    margin-bottom: 36px;
+    flex: 1;
+  }
+
+  .module-divider {
+    width: 40px;
+    height: 1px;
+    background: #D4A853;
+    opacity: 0.5;
+    margin-bottom: 28px;
+  }
+
+  /* Lesson list */
+  .lesson-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .lesson-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .lesson-dot {
+    width: 9px;
+    height: 9px;
+    background: #D4A853;
+    opacity: 0.9;
+    margin-top: 6px;
+    flex-shrink: 0;
+    transform: rotate(45deg);
+    box-shadow: 0 0 6px rgba(232,201,122,0.6);
+  }
+
+  .lesson-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    color: #FFFFFF;
+    opacity: 0.95;
+    line-height: 1.5;
+  }
+
+  /* ── LESSON DEEP DIVE — TILE GRID ── */
+  .deep-dive {
+    background: var(--white);
+    padding: 100px 60px;
+  }
+
+  .deep-dive-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-top: 20px;
+  }
+
+  .deep-dive-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 48px);
+    color: #7A1060;
+  }
+
+  /* Module section */
+  .module-section {
+    margin-bottom: 80px;
+  }
+
+  .module-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--blush);
+  }
+
+  .module-num-pill {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #F5DC7A;
+    background: #7A1060;
+    padding: 8px 20px;
+    border-radius: 30px;
+    white-space: nowrap;
+    border: 1px solid rgba(232,201,122,0.3);
+  }
+
+  .module-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 600;
+    color: #7A1060;
+    line-height: 1.15;
+  }
+
+  /* Lesson tiles grid */
+  .lesson-tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .lesson-tile {
+    background: #F5EFE6;
+    border-radius: 12px;
+    padding: 28px 24px;
+    border: 1px solid rgba(212,168,83,0.25);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lesson-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, #D4A853, #D4A853);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .lesson-tile:hover {
+    background: var(--white);
+    border-color: var(--rose);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(61,26,58,0.08);
+  }
+
+  .lesson-tile:hover::before { opacity: 1; }
+
+  .lesson-tile-num {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #7B3F6E;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .lesson-tile-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #480A52;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .lesson-tile-desc {
+    font-size: 18px;
+    line-height: 1.75;
+    color: #7B3F6E;
+    font-style: italic;
+  }
+
+  /* ── WHATS INCLUDED ── */
+  .included {
+    background: linear-gradient(145deg, #3D0D5E 0%, #480A52 28%, #4A0040 62%, #2A0838 100%);
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .included::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(201,132,142,0.2) 0%, transparent 60%);
+  }
+
+  .included h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 52px);
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .included-sub {
+    font-style: italic;
+    color: var(--blush);
+    opacity: 0.8;
+    font-size: 18px;
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .included-item {
+    background: rgba(255,255,255,0.04);
+    padding: 40px 28px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .included-item:hover { background: rgba(255,255,255,0.08); }
+
+  .included-icon { margin-bottom: 14px; display: block; }
+
+  .included-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #F5DC7A;
+    margin-bottom: 8px;
+  }
+
+  .included-item p {
+    font-size: 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    letter-spacing: 0.2px;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--petal);
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .closing-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    color: #7A1060;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    letter-spacing: 12px;
+  }
+
+  .closing h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 5vw, 60px);
+    color: var(--plum);
+    line-height: 1.2;
+    max-width: 700px;
+    margin: 0 auto 32px;
+  }
+
+  .closing h2 em { font-style: italic; color: var(--mauve); }
+
+  .closing p {
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--text-mid);
+    max-width: 560px;
+    margin: 0 auto 60px;
+    font-style: italic;
+  }
+
+  .closing-footer {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #7A1060;
+    opacity: 0.85;
+  }
+
+  /* ── BRAND HEADER STANDARD ── */
+  .brand-top-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: linear-gradient(180deg, #3D0D5E 0%, #2A0838 100%);
+    border-bottom: 1px solid rgba(212,168,83,0.2);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+
+  .brand-top-bar .brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #D4A853;
+    text-shadow: 0 0 10px rgba(212,168,83,0.35);
+    white-space: nowrap;
+  }
+
+  .brand-star {
+    color: #D4A853;
+    font-size: 10px;
+    opacity: 0.85;
+    text-shadow: 0 0 8px rgba(212,168,83,0.6);
+    flex-shrink: 0;
+    font-family: 'EB Garamond', serif;
+    font-style: normal;
+  }
+
+
+  
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes chevronDrift {
+    0%, 100% { opacity: 0.6; transform: translateY(0); }
+    50%       { opacity: 1;   transform: translateY(6px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .modules-track { grid-template-columns: 1fr; }
+    .module-card { min-height: auto; }
+    .lesson-tiles { grid-template-columns: repeat(2, 1fr); }
+    .included-grid { grid-template-columns: 1fr; }
+    .deep-dive { padding: 60px 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .lesson-tiles { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── BRAND HEADER ── -->
+<div class="brand-top-bar">
+  <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:9px;vertical-align:middle;">✦</span></span>
+  <span class="brand-name">THE ART OF DIVINE ALIGNMENT</span>
+  <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:9px;vertical-align:middle;">✦</span></span>
+</div>
+
+<!-- ── LESSON DEEP DIVE ── -->
+<section class="deep-dive">
+  <div class="deep-dive-header reveal">
+    <span class="section-label" style="white-space:nowrap;">✦ &nbsp; INSIDE EACH MODULE &nbsp; ✦</span>
+    <h2>Every topic, beautifully detailed.</h2>
+  </div>
+
+  <!-- Module 1 -->
+  <div class="module-section reveal">
+    <div class="module-section-header">
+      <span class="module-num-pill">MODULE 01</span>
+      <h3 class="module-section-title">Your Senses Always Guide You</h3>
+    </div>
+    <div class="lesson-tiles">
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">1.1</span>
+        <h4 class="lesson-tile-title">Listening to Your Body's Guidance</h4>
+        <p class="lesson-tile-desc">Your physical sensations are never random — they are loving guidance always pointing you toward what serves your highest self.</p>
+      </div>
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">1.2</span>
+        <h4 class="lesson-tile-title">Calibrating Through Your Senses</h4>
+        <p class="lesson-tile-desc">Becoming aware of how you instinctively adjust to sight, sound, smell, taste, touch, and emotion — these micro-adjustments are your body's natural wisdom seeking balance and comfort.</p>
+      </div>
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">1.3</span>
+        <h4 class="lesson-tile-title">Sacred Body Care & Daily Alignment</h4>
+        <p class="lesson-tile-desc">How tending to your body raises your vibration and opens you to receive — including a practice of offering your body appreciation and compliments rather than criticism.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 2 -->
+  <div class="module-section reveal">
+    <div class="module-section-header">
+      <span class="module-num-pill">MODULE 02</span>
+      <h3 class="module-section-title">Your Inner Being & Emotional Guidance</h3>
+    </div>
+    <div class="lesson-tiles">
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">2.1</span>
+        <h4 class="lesson-tile-title">Understanding Your Inner Being</h4>
+        <p class="lesson-tile-desc">The most expanded, joyful, knowing version of you — always present, always loving, never doubting your worth or your desires.</p>
+      </div>
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">2.2</span>
+        <h4 class="lesson-tile-title">Closing the Gap Between You & Alignment</h4>
+        <p class="lesson-tile-desc">The space between your current thoughts and your inner being's perspective. Your body and emotions give immediate feedback on the size of the gap — and how to gently close it.</p>
+      </div>
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">2.3</span>
+        <h4 class="lesson-tile-title">Listening Practices & Inner Connection</h4>
+        <p class="lesson-tile-desc">The Morning Question, the Appreciation Bridge, and a deep guided inner being meditation — practices that create reliable, daily access to your source connection.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 4 -->
+  <div class="module-section reveal">
+    <div class="module-section-header">
+      <span class="module-num-pill">MODULE 03</span>
+      <h3 class="module-section-title">The Power of Deliberate Focus</h3>
+    </div>
+    <div class="lesson-tiles">
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">3.1</span>
+        <h4 class="lesson-tile-title">How Focus Shapes Reality</h4>
+        <p class="lesson-tile-desc">How your dominant thoughts and feelings shape your emotional state, energy, and lived experience — and how to redirect them with intention.</p>
+      </div>
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">3.2</span>
+        <h4 class="lesson-tile-title">The Focus Wheel & Alignment Practices</h4>
+        <p class="lesson-tile-desc">A powerful tool to shift your vibration around any sticky topic — building genuine momentum through small, reachable thoughts that feel true.</p>
+      </div>
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">3.3</span>
+        <h4 class="lesson-tile-title">Visualisation, Scripting & Releasing Resistance</h4>
+        <p class="lesson-tile-desc">Writing and feeling your desired reality as already true — then softening the stories that stand between you and what you desire, through gentle, honest opening.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 5 -->
+  <div class="module-section reveal">
+    <div class="module-section-header">
+      <span class="module-num-pill">MODULE 04</span>
+      <h3 class="module-section-title">Living in Divine Alignment</h3>
+    </div>
+    <div class="lesson-tiles">
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">4.1</span>
+        <h4 class="lesson-tile-title">Weaving Alignment Into Everyday Life</h4>
+        <p class="lesson-tile-desc">How to carry your alignment practices into every moment of real life — naturally, sustainably, without perfection.</p>
+      </div>
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">4.2</span>
+        <h4 class="lesson-tile-title">Creating Your Personal Alignment Rituals</h4>
+        <p class="lesson-tile-desc">Designing the specific morning, midday, and evening rituals that work for your life, your rhythms, and your unique path to alignment.</p>
+      </div>
+      <div class="lesson-tile">
+        <span class="lesson-tile-num">4.3</span>
+        <h4 class="lesson-tile-title">My Divine Ritual</h4>
+        <p class="lesson-tile-desc">A personal closing practice and the art of returning to alignment with softness — the living expression of your divine alignment, carried forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT'S INCLUDED ── -->
+<section class="included">
+  <p style="font-family:'Cinzel',serif;font-size:15px;font-weight:600;letter-spacing:5px;color:#F5DC7A;margin-bottom:16px;position:relative;white-space:nowrap;">✦ &nbsp; WHAT'S INCLUDED &nbsp; ✦</p>
+  <h2>Everything you need to align.</h2>
+  <p class="included-sub">Every element has been designed for depth, beauty, and lasting transformation.</p>
+
+  <div class="included-grid reveal">
+    <div class="included-item">
+      <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:20px;display:block;margin-bottom:14px;text-shadow:0 0 8px rgba(232,200,112,0.5);">✦</span>
+      <h4>Audio Recordings</h4>
+      <p>Intimate audio guides through each module — teaching, practices, and reflections</p>
+    </div>
+    <div class="included-item">
+      <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:20px;display:block;margin-bottom:14px;text-shadow:0 0 8px rgba(232,200,112,0.5);">✦</span>
+      <h4>Audio & Video Recordings</h4>
+      <p>Intimate audio guides through each module, plus a video walkthrough available in your Skool community</p>
+    </div>
+    <div class="included-item">
+      <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:20px;display:block;margin-bottom:14px;text-shadow:0 0 8px rgba(232,200,112,0.5);">✦</span>
+      <h4>Beautiful PDFs</h4>
+      <p>Exquisitely designed guides to download, print, and keep</p>
+    </div>
+    <div class="included-item">
+      <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:20px;display:block;margin-bottom:14px;text-shadow:0 0 8px rgba(232,200,112,0.5);">✦</span>
+      <h4>Ritual & Ceremony Audios</h4>
+      <p>Sacred audio guides to walk you through your rituals and digital ceremonies</p>
+    </div>
+    <div class="included-item">
+      <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:20px;display:block;margin-bottom:14px;text-shadow:0 0 8px rgba(232,200,112,0.5);">✦</span>
+      <h4>Divine Oracle Cards</h4>
+      <p>Oracle guidance aligned with your emotional state and inner being</p>
+    </div>
+    <div class="included-item">
+      <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:20px;display:block;margin-bottom:14px;text-shadow:0 0 8px rgba(232,200,112,0.5);">✦</span>
+      <h4>Vibrational Wallet</h4>
+      <p>A digital ceremony of allowing, designed to activate the frequency of abundance</p>
+    </div>
+    <div class="included-item">
+      <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:20px;display:block;margin-bottom:14px;text-shadow:0 0 8px rgba(232,200,112,0.5);">✦</span>
+      <h4>4 Divine Rituals</h4>
+      <p>Awakening, Shower, Face Cleanse & Slumber — body-based experiences to bring presence, pleasure, and intention through your day</p>
+    </div>
+    <div class="included-item">
+      <span style="color:#E8C870;font-family:Arial,sans-serif;font-size:20px;display:block;margin-bottom:14px;text-shadow:0 0 8px rgba(232,200,112,0.5);">✦</span>
+      <h4>4 Potent Modules</h4>
+      <p>Tune In · Align · Direct · Allow — a complete path to living in alignment</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING ── -->
+<section class="closing">
+  <div class="closing-ornament" style="color:#E8C870;font-family:Arial,sans-serif;font-size:16px;letter-spacing:12px;text-align:center;margin-bottom:40px;">✦ ✦ ✦</div>
+  <h2>This is not about<br>doing more.<br><em>It is about becoming<br>more of who you are.</em></h2>
+  <p>Each module is designed to be experienced slowly, with presence and self-compassion. There is no rush. Alignment is not a destination — it is a way of moving through life.</p>
+  <div class="closing-footer" style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:#7A1060;opacity:0.85;margin-top:48px;">
+    <span style="display:inline-block;color:#D4A853;font-size:10px;line-height:1;font-family:Arial,sans-serif;font-style:normal;vertical-align:middle;opacity:0.85;">✦</span> &nbsp; BEGIN YOUR JOURNEY &nbsp; <span style="display:inline-block;color:#D4A853;font-size:10px;line-height:1;font-family:Arial,sans-serif;font-style:normal;vertical-align:middle;opacity:0.85;">✦</span>
+  </div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--mauve);opacity:0.7;margin-top:16px;line-height:1.7;">
+    You do not have to figure out how to get from here to there.<br>
+    You only have to care about how you feel, right now, in this moment.<br>
+    <em>Alignment is always just one thought away.</em>
+  </p>
+</section>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+
+
+
+</body>
+</html>
